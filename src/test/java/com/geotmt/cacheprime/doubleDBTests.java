@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Log4j2
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT )
-public class CacheApplicationTests {
+public class doubleDBTests {
 
     @Autowired
     private ICuserService cuserService;
