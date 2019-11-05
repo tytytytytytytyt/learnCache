@@ -1,4 +1,4 @@
-package com.geotmt.cache.config;
+package com.geotmt.cacheprime.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,12 +23,12 @@ import javax.sql.DataSource;
  **/
 // 扫描 Mapper 接口并容器管理
 @Configuration
-@MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
-public class MasterDataSourceConfig {
+@MapperScan(basePackages = WorldDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
+public class WorldDataSourceConfig {
 
     // 精确到 master 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "com.geotmt.cache.dao.master";
-    static final String MAPPER_LOCATION = "classpath:mapper/master/*.xml";
+    static final String PACKAGE = "com.geotmt.cacheprime.dao.world";
+    static final String MAPPER_LOCATION = "classpath:mapper/world/*.xml";
 
     @Value("${master.datasource.url}")
     private String url;
@@ -66,7 +66,7 @@ public class MasterDataSourceConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(masterDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources(MasterDataSourceConfig.MAPPER_LOCATION));
+                .getResources(WorldDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 }

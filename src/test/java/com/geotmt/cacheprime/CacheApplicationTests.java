@@ -1,10 +1,11 @@
-package com.geotmt.cache;
+package com.geotmt.cacheprime;
 
 
-import com.geotmt.cache.entity.Cuser;
-import com.geotmt.cache.entity.User;
-import com.geotmt.cache.service.ICuserService;
-import com.geotmt.cache.service.IUserService;
+
+import com.geotmt.cacheprime.entity.Cuser;
+import com.geotmt.cacheprime.entity.User;
+import com.geotmt.cacheprime.service.ICuserService;
+import com.geotmt.cacheprime.service.IUserService;
 import com.google.common.base.Joiner;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;

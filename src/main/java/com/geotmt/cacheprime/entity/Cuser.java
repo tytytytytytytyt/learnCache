@@ -1,4 +1,4 @@
-package com.geotmt.cache.entity;
+package com.geotmt.cacheprime.entity;
 
 import lombok.Data;
 import lombok.ToString;

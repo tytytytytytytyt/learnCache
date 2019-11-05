@@ -1,9 +1,10 @@
-package com.geotmt.cache.service.impl;
+package com.geotmt.cacheprime.service.impl;
 
 
-import com.geotmt.cache.dao.master.UserMapper;
-import com.geotmt.cache.entity.User;
-import com.geotmt.cache.service.IUserService;
+
+import com.geotmt.cacheprime.dao.hello.UserMapper;
+import com.geotmt.cacheprime.entity.User;
+import com.geotmt.cacheprime.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

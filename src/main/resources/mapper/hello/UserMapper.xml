@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.geotmt.cache.dao.master.UserMapper">
+<mapper namespace="com.geotmt.cacheprime.dao.hello.UserMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="userBaseResultMap1" type="com.geotmt.cache.entity.User">
+	<resultMap id="userBaseResultMap1" type="com.geotmt.cacheprime.entity.User">
 		<id column="id" property="id" />
 		<result column="avatar" property="avatar" />
 		<result column="account" property="account" />
@@ -36,19 +36,19 @@
 	</sql>
 
 
-	<select id="getByAccount" resultType="com.geotmt.cache.entity.User">
+	<select id="getByAccount" resultType="com.geotmt.cacheprime.entity.User">
 		select
 		<include refid="Base_Column_List_With_Pwd" />
 		from sys_user where account = #{account} and status != 3
 	</select>
 
-	<select id="getUserByRoleId" resultType="com.geotmt.cache.entity.User">
+	<select id="getUserByRoleId" resultType="com.geotmt.cacheprime.entity.User">
 		select
 		<include refid="Base_Column_List_With_Pwd" />
 		from sys_user where roleid = #{roleId} and status != 3
 	</select>
 
-	<select id="getUserByDeptId" resultType="com.geotmt.cache.entity.User">
+	<select id="getUserByDeptId" resultType="com.geotmt.cacheprime.entity.User">
 		select
 		<include refid="Base_Column_List_With_Pwd" />
 		from sys_user where deptid = #{deptId} and status != 3

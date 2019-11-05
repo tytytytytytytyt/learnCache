@@ -1,7 +1,9 @@
-package com.geotmt.cache.service;
+package com.geotmt.cacheprime.service;
 
 
-import com.geotmt.cache.entity.Cuser;
+;
+import com.geotmt.cacheprime.entity.Cuser;
+
 import java.util.List;
 
 

@@ -1,6 +1,8 @@
-package com.geotmt.cache.service;
+package com.geotmt.cacheprime.service;
 
-import com.geotmt.cache.entity.User;
+
+import com.geotmt.cacheprime.entity.User;
+
 import java.util.List;
 
 public interface IUserService  {

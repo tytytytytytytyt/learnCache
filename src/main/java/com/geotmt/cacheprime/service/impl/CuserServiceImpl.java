@@ -1,8 +1,9 @@
-package com.geotmt.cache.service.impl;
+package com.geotmt.cacheprime.service.impl;
 
-import com.geotmt.cache.dao.cluster.CuserMapper;
-import com.geotmt.cache.entity.Cuser;
-import com.geotmt.cache.service.ICuserService;
+
+import com.geotmt.cacheprime.dao.world.CuserMapper;
+import com.geotmt.cacheprime.entity.Cuser;
+import com.geotmt.cacheprime.service.ICuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

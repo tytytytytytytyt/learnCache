@@ -1,4 +1,4 @@
-package com.geotmt.cache.config;
+package com.geotmt.cacheprime.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,12 +15,12 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = ClusterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "clusterSqlSessionFactory")
-public class ClusterDataSourceConfig {
+@MapperScan(basePackages = HelloDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "clusterSqlSessionFactory")
+public class HelloDataSourceConfig {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "com.geotmt.cache.dao.cluster";
-    static final String MAPPER_LOCATION = "classpath:mapper/cluster/*.xml";
+    static final String PACKAGE = "com.geotmt.cacheprime.dao.hello";
+    static final String MAPPER_LOCATION = "classpath:mapper/hello/*.xml";
 
     @Value("${cluster.datasource.url}")
     private String url;
@@ -55,7 +55,7 @@ public class ClusterDataSourceConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(clusterDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources(ClusterDataSourceConfig.MAPPER_LOCATION));
+                .getResources(HelloDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 

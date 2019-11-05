@@ -1,4 +1,4 @@
-package com.geotmt.cache.utils;
+package com.geotmt.cacheprime.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
