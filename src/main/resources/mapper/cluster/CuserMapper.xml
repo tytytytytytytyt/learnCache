@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geotmt.cache.dao.cluster.CuserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="cUserBaseResultMap1" type="com.geotmt.cache.entity.Cuser">
+        <id column="id" property="id" />
+        <result column="cuser_name" property="cuserName" />
+        <result column="type" property="type" />
+        <result column="cuser_is_frozen" property="cuserIsFrozen" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="is_delete" property="isDelete" />
+        <result column="cuser_password" property="cuserPassword" />
+        <result column="cuser_account" property="cuserAccount" />
+        <result column="cuser_email" property="cuserEmail" />
+        <result column="cuser_phone" property="cuserPhone" />
+        <result column="cuser_address" property="cuserAddress" />
+        <result column="cuser_lp" property="cuserLp" />
+        <result column="customer_id" property="customerId" />
+        <result column="salt" property="salt" />
+        <result column="encrypt_type" property="encryptType" />
+        <result column="encrypt_key" property="encryptKey" />
+        <result column="hash_val" property="hashVal"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		id, cuser_name, customer_id,  type, cuser_is_frozen, create_time, create_user, modify_time,
+		modify_user, is_delete, cuser_account, cuser_email, cuser_phone, cuser_address, cuser_lp, encrypt_key, encrypt_type
+	</sql>
+
+    <sql id="Base_Column_List_With_Pwd">
+		id, cuser_name, customer_id, type, cuser_is_frozen, create_time, create_user, modify_time,
+		modify_user, is_delete, salt, cuser_password, cuser_account, cuser_email, cuser_phone, cuser_address, cuser_lp
+	</sql>
+
+
+
+
+
+    <select id="getCuserByAccount" resultMap="cUserBaseResultMap1">
+        select
+        <include refid="Base_Column_List_With_Pwd" />
+        from t_cuser_info where is_delete = 0
+        <if test="type != null and type != ''">
+            AND type = #{type}
+        </if>
+        <if test="cuserAccount != null and cuserAccount != ''">
+            AND cuser_account = #{cuserAccount}
+        </if>
+        <if test="customerId != null and customerId != ''">
+            AND customer_id = #{customerId}
+        </if>
+        <if test="cuserId != null and cuserId != ''">
+            AND id != #{cuserId}
+        </if>
+    </select>
+
+
+    <!-- 根据客户id获取正式或测试id -->
+    <select id="getCusersByType" resultMap="cUserBaseResultMap1">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_cuser_info WHERE
+        is_delete = 0 and customer_id = #{customerId}
+    </select>
+</mapper>
