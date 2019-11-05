@@ -31,12 +31,12 @@ public class CacheApplicationTests {
 
     @Test
     public void doubleDB() {
-        log.info("查看master 库数据~~~~~~~~~~~~~");
+        log.info("查看hello 库数据~~~~~~~~~~~~~");
         List<User> userList = userService.getUserByRoleId("1");
         String userNames = userList.stream().map(user -> user.getName()).collect(Collectors.joining(","));
         log.info(userNames);
 
-        log.info("查看cluster 库数据~~~~~~~~~~~~~");
+        log.info("查看world 库数据~~~~~~~~~~~~~");
         List<Cuser> cuserList = cuserService.getCusersByType(10L);
         String accounts = cuserList.stream().map(cuser -> cuser.getCuserAccount()).collect(Collectors.joining(","));
         log.info(accounts);

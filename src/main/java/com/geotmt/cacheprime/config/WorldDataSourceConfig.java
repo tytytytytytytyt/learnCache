@@ -23,26 +23,26 @@ import javax.sql.DataSource;
  **/
 // 扫描 Mapper 接口并容器管理
 @Configuration
-@MapperScan(basePackages = WorldDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
+@MapperScan(basePackages = WorldDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "worldSqlSessionFactory")
 public class WorldDataSourceConfig {
 
     // 精确到 master 目录，以便跟其他数据源隔离
     static final String PACKAGE = "com.geotmt.cacheprime.dao.world";
     static final String MAPPER_LOCATION = "classpath:mapper/world/*.xml";
 
-    @Value("${master.datasource.url}")
+    @Value("${world.datasource.url}")
     private String url;
 
-    @Value("${master.datasource.username}")
+    @Value("${world.datasource.username}")
     private String user;
 
-    @Value("${master.datasource.password}")
+    @Value("${world.datasource.password}")
     private String password;
 
-    @Value("${master.datasource.driverClassName}")
+    @Value("${world.datasource.driverClassName}")
     private String driverClass;
 
-    @Bean(name = "masterDataSource")
+    @Bean(name = "worldDataSource")
     @Primary
     public DataSource masterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
@@ -53,18 +53,18 @@ public class WorldDataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name = "masterTransactionManager")
+    @Bean(name = "worldTransactionManager")
     @Primary
     public DataSourceTransactionManager masterTransactionManager() {
         return new DataSourceTransactionManager(masterDataSource());
     }
 
-    @Bean(name = "masterSqlSessionFactory")
+    @Bean(name = "worldSqlSessionFactory")
     @Primary
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
+    public SqlSessionFactory worldSqlSessionFactory(@Qualifier("worldDataSource") DataSource worldDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(masterDataSource);
+        sessionFactory.setDataSource(worldDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
                 .getResources(WorldDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();

@@ -3,33 +3,24 @@
 
 
 
-CREATE TABLE `t_cuser_info` (
+CREATE TABLE `sys_user` (
   `id` INT(20) NOT NULL COMMENT '主键ID',
-  `cuser_name` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '客户用户名称',
-  `type` TINYINT(2) NOT NULL DEFAULT '0' COMMENT '客户用户权限',
-  `cuser_is_frozen` TINYINT(2) NOT NULL DEFAULT '0' COMMENT '客户用户是否冻结',
-  `create_time` DATETIME NOT NULL COMMENT '创建时间',
-  `create_user` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '创建人',
-  `modify_time` DATETIME DEFAULT NULL COMMENT '修改时间',
-  `modify_user` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
-  `is_delete` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '逻辑删除标识（1：删除，0：存在）',
-  `cuser_password` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '客户用户密码',
-  `cuser_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '客户用户账号',
-  `cuser_email` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '客户用户邮箱',
-  `cuser_phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '客户用户联系方式',
-  `cuser_address` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '客户用户地址',
-  `cuser_lp` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '客户用户联系人',
-  `customer_id` INT(20) NOT NULL COMMENT '客户Id',
-  `salt` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '加盐',
-  `encrypt_type` TINYINT(2) DEFAULT NULL COMMENT '加密类型',
-  `encrypt_key` VARCHAR(16) DEFAULT NULL COMMENT '加密key',
-  `hash_val` VARCHAR(250) DEFAULT NULL COMMENT 'hash值',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `cuser_account` (`cuser_account`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='客户用户表'
-
-
-
+  `avatar` VARCHAR(20)  NULL COMMENT '头像',
+  `account` VARCHAR(20)  NULL  COMMENT '账号',
+  `password` VARCHAR(40)  NULL  COMMENT '密码',
+  `salt` VARCHAR(6)  NULL COMMENT '盐',
+  `name` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '姓名',
+  `birthday` DATETIME DEFAULT NULL COMMENT '生日',
+  `sex` TINYINT(4)  DEFAULT '0' COMMENT '性别',
+  `email` VARCHAR(15) NULL  COMMENT '邮箱',
+  `phone` VARCHAR(10)  NULL COMMENT '手机',
+  `roleid` INT(10)  ,
+  `deptid` INT(10) ,
+  `status` INT(8) ,
+  `createtime` DATETIME  NULL ,
+  `version` INT(8),
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=INNODB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统客户表'
 
 
 

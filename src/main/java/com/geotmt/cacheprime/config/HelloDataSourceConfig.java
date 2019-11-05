@@ -15,26 +15,26 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = HelloDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "clusterSqlSessionFactory")
+@MapperScan(basePackages = HelloDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "helloSqlSessionFactory")
 public class HelloDataSourceConfig {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离
     static final String PACKAGE = "com.geotmt.cacheprime.dao.hello";
     static final String MAPPER_LOCATION = "classpath:mapper/hello/*.xml";
 
-    @Value("${cluster.datasource.url}")
+    @Value("${hello.datasource.url}")
     private String url;
 
-    @Value("${cluster.datasource.username}")
+    @Value("${hello.datasource.username}")
     private String user;
 
-    @Value("${cluster.datasource.password}")
+    @Value("${hello.datasource.password}")
     private String password;
 
-    @Value("${cluster.datasource.driverClassName}")
+    @Value("${hello.datasource.driverClassName}")
     private String driverClass;
 
-    @Bean(name = "clusterDataSource")
+    @Bean(name = "helloDataSource")
     public DataSource clusterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
@@ -44,16 +44,16 @@ public class HelloDataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name = "clusterTransactionManager")
+    @Bean(name = "helloTransactionManager")
     public DataSourceTransactionManager clusterTransactionManager() {
         return new DataSourceTransactionManager(clusterDataSource());
     }
 
-    @Bean(name = "clusterSqlSessionFactory")
-    public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("clusterDataSource") DataSource clusterDataSource)
+    @Bean(name = "helloSqlSessionFactory")
+    public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("helloDataSource") DataSource helloDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(clusterDataSource);
+        sessionFactory.setDataSource(helloDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
                 .getResources(HelloDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
