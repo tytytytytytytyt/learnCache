@@ -1,26 +1,22 @@
 
-
-
-
-
 CREATE TABLE `sys_user` (
-  `id` INT(20) NOT NULL COMMENT '主键ID',
-  `avatar` VARCHAR(20)  NULL COMMENT '头像',
-  `account` VARCHAR(20)  NULL  COMMENT '账号',
-  `password` VARCHAR(40)  NULL  COMMENT '密码',
-  `salt` VARCHAR(6)  NULL COMMENT '盐',
-  `name` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '姓名',
-  `birthday` DATETIME DEFAULT NULL COMMENT '生日',
-  `sex` TINYINT(4)  DEFAULT '0' COMMENT '性别',
-  `email` VARCHAR(15) NULL  COMMENT '邮箱',
-  `phone` VARCHAR(10)  NULL COMMENT '手机',
-  `roleid` INT(10)  ,
-  `deptid` INT(10) ,
-  `status` INT(8) ,
-  `createtime` DATETIME  NULL ,
-  `version` INT(8),
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=INNODB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统客户表'
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '头像',
+  `account` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '账号',
+  `password` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '密码',
+  `salt` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'md5密码盐',
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '名字',
+  `birthday` datetime DEFAULT NULL COMMENT '生日',
+  `sex` int(11) DEFAULT NULL COMMENT '性别（1：男 2：女）',
+  `email` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '电子邮件',
+  `phone` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '电话',
+  `roleid` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '角色id',
+  `deptid` int(11) DEFAULT NULL COMMENT '部门id',
+  `status` int(11) DEFAULT NULL COMMENT '状态(1：启用  2：冻结  3：删除）',
+  `createtime` datetime DEFAULT NULL COMMENT '创建时间',
+  `version` int(11) DEFAULT NULL COMMENT '保留字段',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=696 DEFAULT CHARSET=utf8 COMMENT='管理员表'
 
 
 
