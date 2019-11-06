@@ -1,6 +1,9 @@
 logging:
   file: /data/apps/log/cache/global.log
 
+mybatis:
+  config-location: classpath:mybatis.cfg.xml  #mybatis所在路径
+
 spring:
   redis:
     database: 15

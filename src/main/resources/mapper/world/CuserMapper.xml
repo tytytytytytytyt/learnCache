@@ -37,7 +37,13 @@
 	</sql>
 
 
+    <update id="setCuserStatus">
+        update t_cuser_info set status = #{status} where id = #{cuserId}
+    </update>
 
+    <update id="changeCuserPwd">
+        update t_cuser_info set password = #{pwd} where id = #{cuserId}
+    </update>
 
 
     <select id="getCuserByAccount" resultMap="cUserBaseResultMap1">
