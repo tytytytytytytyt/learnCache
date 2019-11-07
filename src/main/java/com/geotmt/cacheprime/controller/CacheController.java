@@ -42,6 +42,16 @@ public class CacheController {
         return cuserService.updateCuserStatus(cuserStatus.getCuserId(),cuserStatus.getStatus());
     }
 
+    @RequestMapping(value = "/updatecuserstatusbyentity", method = RequestMethod.POST)
+    public int updateCuserStatusByStatusEntity(CuserStatus cuserStatus){
+        return cuserService.updateCuserStatusByStatusEntity(cuserStatus);
+    }
+
+    @RequestMapping(value = "/getcuserbycuserentity", method = RequestMethod.POST)
+    public Cuser getCuserByStatusEntity(CuserStatus cuserStatus){
+        return cuserService.getCuserByStatusEntity(cuserStatus);
+    }
+
 
     @RequestMapping(value = "/updatecuserpwd", method = RequestMethod.GET)
     public int updateCuserPwd(@RequestParam(value = "cuserId") String cuserId,@RequestParam(value = "pwd") String pwd) {

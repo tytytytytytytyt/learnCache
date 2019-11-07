@@ -20,4 +20,8 @@ public interface ICuserService {
 
     boolean existCuserWithCutomerId(Long customerId);
 
+    int updateCuserStatusByStatusEntity(CuserStatus cuserStatus);
+
+    Cuser getCuserByStatusEntity(CuserStatus cuserStatus);
+
 }

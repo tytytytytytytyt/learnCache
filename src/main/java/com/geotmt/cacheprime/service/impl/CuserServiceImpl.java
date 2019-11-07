@@ -39,6 +39,10 @@ public class CuserServiceImpl  implements ICuserService {
         return this.cuserMapper.getCusersByType(customerId);
     }
 
+
+
+
+    //------------------------------key = "#cuserId"--------------------------------------start
     @Override
     @Cacheable(value = "cuserCache", key = "#cuserId")
     public Cuser getCuserByCuserId(String cuserId) {
@@ -61,6 +65,34 @@ public class CuserServiceImpl  implements ICuserService {
         log.info(" updateCuserStatus from DB~~~~~~~~");
         return cuserMapper.setCuserStatus(cuserId, status);
     }
+    //------------------------------key = "#cuserId"-----------------------------------------end
+
+
+
+
+
+
+
+
+    //------------------------------key = "#cuserStatus.cuserId"-----------------------------start
+    @CacheEvict(value = "cuserCache", key = "#cuserStatus.cuserId")
+    public int updateCuserStatusByStatusEntity(CuserStatus cuserStatus) {
+        log.info(" updateCuserStatusByStatusEntity from DB~~~~~~~~");
+        return cuserMapper.setCuserStatus(cuserStatus.getCuserId(), cuserStatus.getStatus());
+    }
+
+    @Cacheable(value = "cuserCache", key = "#cuserStatus.cuserId")
+    public Cuser getCuserByStatusEntity(CuserStatus cuserStatus) {
+        log.info(" select getCuserByStatusEntity from DB~~~~~~~~");
+        return this.cuserMapper.getCuserByCuserId(cuserStatus.getCuserId());
+    }
+    //------------------------------key = "#cuserStatus.cuserId"-----------------------------end
+
+
+
+
+
+
 
     @Override
     @CacheEvict(value = "cuserCache", keyGenerator = "cacheKeyGenerator")

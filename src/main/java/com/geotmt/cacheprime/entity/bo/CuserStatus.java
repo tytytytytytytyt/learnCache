@@ -12,6 +12,6 @@ public class CuserStatus implements Serializable {
     private static final long serialVersionUID = 1302584L;
 
     private String cuserId ;
-    private int status;
+    private Integer status;
 
 }
