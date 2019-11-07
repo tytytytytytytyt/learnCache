@@ -85,8 +85,13 @@
         <Logger name="org.springframework" level="info" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
+        <logger name="com.geotmt.cacheprime.dao" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
+        </logger>
 
-        <root level="info">
+
+        <root level="debug">
             <appender-ref ref="Console"/>
             <appender-ref ref="Filelog"/>
             <appender-ref ref="RollingFileInfo"/>
