@@ -8,7 +8,6 @@ import com.google.common.collect.Maps;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -22,7 +21,7 @@ public class TestCacheController {
 
 
     @Test
-    public void ehcacheTestTTI()  {
+    public void cuserbyaccount()  {
         String url = "http://127.0.0.1:8010/cache/cuserbyaccount";
         HashMap<String, String> params = Maps.newHashMap();
 
@@ -33,6 +32,54 @@ public class TestCacheController {
         HttpResult httpResult = OkHttpUtil.doGet(url, null, params);
         System.out.println(httpResult);
 
+    }
 
+
+    @Test
+    public void cuserbycuserid()  {
+        // 查询用户id为5的用户 缓存起来
+        String url = "http://127.0.0.1:8010/cache/cuserbycuserid";
+        HashMap<String, String> params = Maps.newHashMap();
+        params.put("cuserId", "5");
+        HttpResult httpResult = OkHttpUtil.doGet(url, null, params);
+        System.out.println(httpResult);
+
+        // 查询用户id为5的用户
+        httpResult = OkHttpUtil.doGet(url, null, params);
+        System.out.println(httpResult);
+
+        // 更新id为5的用户缓存失效
+        url = "http://127.0.0.1:8010/cache/updatecuserstatus";
+        HashMap<String, String> params1 = Maps.newHashMap();
+        params1.put("cuserId", "5");
+        params1.put("status","2");
+        httpResult = OkHttpUtil.doPostForm(url, null, params1);
+        System.out.println(httpResult);
+
+        // 查询用户id为5的用户 缓存起来
+        url = "http://127.0.0.1:8010/cache/cuserbycuserid";
+        HashMap<String, String> params2 = Maps.newHashMap();
+        params2.put("cuserId", "5");
+        httpResult = OkHttpUtil.doGet(url, null, params2);
+        System.out.println(httpResult);
+
+        // 查询用户id为5的用户
+        httpResult = OkHttpUtil.doGet(url, null, params2);
+        System.out.println(httpResult);
+    }
+
+    @Test
+    public void updatecuserpwd(){
+        // 查询id为10的客户 缓存起来
+        String  url = "http://127.0.0.1:8010/cache/cuserbyid";
+        HashMap<String, String> params = Maps.newHashMap();
+        params.put("cuserId", "5");
+        HttpResult httpResult = OkHttpUtil.doGet(url, null, params);
+        System.out.println(httpResult);
+
+        // 自调用缓存失效的解决办法，从容器中获取bean
+        url = "http://127.0.0.1:8010/cache/existcuser";
+        httpResult = OkHttpUtil.doGet(url, null, params);
+        System.out.println(httpResult);
     }
 }

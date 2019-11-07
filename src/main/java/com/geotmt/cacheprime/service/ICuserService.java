@@ -12,7 +12,9 @@ public interface ICuserService {
 
     List<Cuser> getCuserByCustomerId(Long customerId);
 
-    int updateCuserStatus(CuserStatus cuserStatus);
+    Cuser getCuserByCuserId(String cuserId);
+
+    int updateCuserStatus(String cuserId,int status);
 
     int updateCuserPwd(String cuserId, String pwd);
 

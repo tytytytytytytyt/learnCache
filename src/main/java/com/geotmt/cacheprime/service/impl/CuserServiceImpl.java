@@ -40,10 +40,26 @@ public class CuserServiceImpl  implements ICuserService {
     }
 
     @Override
-    @CacheEvict(value = "cuserCache", key = "#cuserStatus.cuserId")
-    public int updateCuserStatus(CuserStatus cuserStatus) {
+    @Cacheable(value = "cuserCache", key = "#cuserId")
+    public Cuser getCuserByCuserId(String cuserId) {
+        log.info(" select getCuserByCuserId from DB~~~~~~~~");
+        return this.cuserMapper.getCuserByCuserId(cuserId);
+    }
+
+
+    /**
+     * 这里需要注意的地方就是spring cache的生效，失效的前提
+     * 是key的类型必须完全一致，就算参数一样，但是参数类型不同也是命不中缓存的
+     * getCuserByCuserId(String cuserId) key为"#cuserId" 存入缓存，
+     * updateCuserStatus(String cuserId,int status) key为"#cuserId"  让缓存失效
+     * 将getCuserByCuserId(String cuserId)的参数改成Long  缓存失效失败，
+     * 同理："#cuserStatus.cuserId" 写成这样子也是缓存失效失败， 必须是#key参数类型相同，参数名一致才能生效
+     */
+    @Override
+    @CacheEvict(value = "cuserCache", key = "#cuserId") //key = "#cuserStatus.cuserId"
+    public int updateCuserStatus(String cuserId,int status) {
         log.info(" updateCuserStatus from DB~~~~~~~~");
-        return cuserMapper.setCuserStatus(cuserStatus.getCuserId(), cuserStatus.getStatus());
+        return cuserMapper.setCuserStatus(cuserId, status);
     }
 
     @Override
@@ -53,10 +69,10 @@ public class CuserServiceImpl  implements ICuserService {
         return cuserMapper.changeCuserPwd(cuserId,pwd);
     }
 
+
     /***
      * 解决自调用 @Cacheable， @CacheEvict失效的问题
-     * @param customerId
-     * @return
+     * 自调用缓存失效的解决办法，从容器中获取bean
      */
     @Override
     public boolean existCuserWithCutomerId(Long customerId){

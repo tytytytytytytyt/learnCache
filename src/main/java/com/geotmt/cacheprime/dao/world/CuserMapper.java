@@ -13,6 +13,8 @@ public interface CuserMapper {
 
     List<Cuser> getCusersByType(@Param("customerId") Long customerId);
 
+    Cuser getCuserByCuserId(@Param("cuserId") String cuserId);
+
     int setCuserStatus(@Param("cuserId") String cuserId, @Param("status") int status);
 
     int changeCuserPwd(@Param("cuserId") String cuserId, @Param("pwd") String pwd);

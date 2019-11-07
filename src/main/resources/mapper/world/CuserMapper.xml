@@ -38,11 +38,11 @@
 
 
     <update id="setCuserStatus">
-        update t_cuser_info set status = #{status} where id = #{cuserId}
+        update t_cuser_info set is_delete = #{status} where id = #{cuserId}
     </update>
 
     <update id="changeCuserPwd">
-        update t_cuser_info set password = #{pwd} where id = #{cuserId}
+        update t_cuser_info set cuser_password = #{pwd} where id = #{cuserId}
     </update>
 
 
@@ -64,6 +64,14 @@
         </if>
     </select>
 
+
+
+    <select id="getCuserByCuserId" resultMap="cUserBaseResultMap1">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_cuser_info WHERE
+        id = #{cuserId}
+    </select>
 
     <!-- 根据客户id获取正式或测试id -->
     <select id="getCusersByType" resultMap="cUserBaseResultMap1">

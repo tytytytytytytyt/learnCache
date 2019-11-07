@@ -32,9 +32,14 @@ public class CacheController {
         return cuserService.getCuserByAccount(type,cuserAccount,customerId,cuserId);
     }
 
+    @RequestMapping(value = "/cuserbycuserid", method = RequestMethod.GET)
+    public Object getCuserByCuserId(@RequestParam(value = "cuserId") String cuserId) {
+        return cuserService.getCuserByCuserId(cuserId);
+    }
+
     @RequestMapping(value = "/updatecuserstatus", method = RequestMethod.POST)
     public int updateCuserStatus(CuserStatus cuserStatus){
-        return cuserService.updateCuserStatus(cuserStatus);
+        return cuserService.updateCuserStatus(cuserStatus.getCuserId(),cuserStatus.getStatus());
     }
 
 
@@ -42,6 +47,7 @@ public class CacheController {
     public int updateCuserPwd(@RequestParam(value = "cuserId") String cuserId,@RequestParam(value = "pwd") String pwd) {
         return cuserService.updateCuserPwd(cuserId,pwd);
     }
+
 
     @RequestMapping(value = "/existcuser", method = RequestMethod.GET)
     public Boolean existCuserWithCutomerId(@RequestParam(value = "id") long id) {
