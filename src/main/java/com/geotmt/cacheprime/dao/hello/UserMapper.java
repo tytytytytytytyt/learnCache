@@ -10,9 +10,13 @@ import java.util.List;
 public interface UserMapper {
 
 
-    User getByAccount(@Param("account") String account);
+    User getById(@Param("id") String id);
+
+    Integer updatePwdById(@Param("id") String id, @Param("cuserPassword") String cuserPassword);
 
     List<User> getUserByRoleId(@Param("roleId") String roleId);
 
     List<User> getUserByDeptId(@Param("deptId") String deptId);
+
+    //
 }

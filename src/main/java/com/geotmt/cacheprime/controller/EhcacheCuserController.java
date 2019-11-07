@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cache")
-public class CacheController {
+public class EhcacheCuserController {
 
    @Autowired
    private ICuserService cuserService;

@@ -1,7 +1,6 @@
 package com.geotmt.cacheprime;
 
 
-import com.geotmt.cacheprime.controller.CacheController;
 import com.geotmt.cacheprime.utils.OkHttpUtil;
 import com.geotmt.cacheprime.utils.bean.HttpResult;
 import com.google.common.collect.Maps;
@@ -16,7 +15,7 @@ import java.util.HashMap;
 @Log4j2
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT )
-public class TestCacheController {
+public class TestEhcacheCuserController {
 
 
 

@@ -36,10 +36,10 @@
 	</sql>
 
 
-	<select id="getByAccount" resultType="com.geotmt.cacheprime.entity.User">
+	<select id="getById" resultType="com.geotmt.cacheprime.entity.User">
 		select
 		<include refid="Base_Column_List_With_Pwd" />
-		from sys_user where account = #{account} and status != 3
+		from sys_user where id = #{id} and status != 3
 	</select>
 
 	<select id="getUserByRoleId" resultType="com.geotmt.cacheprime.entity.User">
@@ -53,4 +53,17 @@
 		<include refid="Base_Column_List_With_Pwd" />
 		from sys_user where deptid = #{deptId} and status != 3
 	</select>
+
+	<update id="updatePwdById" >
+		<if test="id != null">
+			UPDATE sys_user
+			<set>
+				<if test="cuserPassword != null and cuserPassword != ''">
+					password = #{cuserPassword},
+				</if>
+			</set>
+			WHERE id = #{id}
+		</if>
+	</update>
+
 </mapper>
