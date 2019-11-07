@@ -4,11 +4,12 @@ package com.geotmt.cacheprime.entity;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @ToString
-public class User {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

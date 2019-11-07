@@ -4,12 +4,13 @@ import lombok.Data;
 import lombok.ToString;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Data
 @ToString
-public class Cuser  {
+public class Cuser implements Serializable {
 
     private static final long serialVersionUID = 1L;
     /**
