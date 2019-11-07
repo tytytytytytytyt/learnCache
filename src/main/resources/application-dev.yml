@@ -26,16 +26,16 @@ spring:
         max-idle: 10
         # 连接池中的最小空闲连接
         min-idle: 0
-#  # 缓存配置读取
-#  cache:
-#    type: ehcache
-#    ehcache:
-#      config: classpath:ehcache.xml
+  # 缓存配置读取
+  cache:
+    ehcache:
+      config: classpath:ehcache/ehcache.xml
+    type: ehcache
 
 
 hello:          ##  数据源配置  springbootdb_cluster
   datasource:
-    url: jdbc:mysql://localhost:3306/hello?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/hello?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
     username: root
     password: 123456
     driverClassName: com.mysql.jdbc.Driver
@@ -43,7 +43,7 @@ hello:          ##  数据源配置  springbootdb_cluster
 
 world:          ## cluster 数据源配置
   datasource:
-    url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
     username: root
     password: 123456
     driverClassName: com.mysql.jdbc.Driver

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 
 @RestController
@@ -19,15 +20,15 @@ public class CacheController {
    private ICuserService cuserService;
 
     @RequestMapping(value = "/cuserbyid", method = RequestMethod.GET)
-    public Object queryUnify(@RequestParam(value = "id") long id) {
-        return cuserService.getCusersByType(id);
+    public Object getCuserByCustId(@RequestParam(value = "id") long id) {
+        return cuserService.getCuserByCustomerId(id);
     }
 
     @RequestMapping(value = "/cuserbyaccount", method = RequestMethod.GET)
-    public Cuser getCusersByType(@RequestParam(value = "type") String type,
-                                 @RequestParam(value = "cuserAccount") String cuserAccount,
-                                 @RequestParam(value = "customerId") String customerId,
-                                 @RequestParam(value = "cuserId")  String cuserId) {
+    public List<Cuser> getCusersByType(@RequestParam(value = "type") String type,
+                                       @RequestParam(value = "cuserAccount") String cuserAccount,
+                                       @RequestParam(value = "customerId") String customerId,
+                                       @RequestParam(value = "cuserId")  String cuserId) {
         return cuserService.getCuserByAccount(type,cuserAccount,customerId,cuserId);
     }
 
@@ -40,6 +41,11 @@ public class CacheController {
     @RequestMapping(value = "/updatecuserpwd", method = RequestMethod.GET)
     public int updateCuserPwd(@RequestParam(value = "cuserId") String cuserId,@RequestParam(value = "pwd") String pwd) {
         return cuserService.updateCuserPwd(cuserId,pwd);
+    }
+
+    @RequestMapping(value = "/existcuser", method = RequestMethod.GET)
+    public Boolean existCuserWithCutomerId(@RequestParam(value = "id") long id) {
+        return cuserService.existCuserWithCutomerId(id);
     }
 
 

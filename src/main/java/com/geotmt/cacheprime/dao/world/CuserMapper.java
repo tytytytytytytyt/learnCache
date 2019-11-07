@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface CuserMapper {
 
-    Cuser getCuserByAccount(@Param("type") String type, @Param("cuserAccount") String cuserAccount, @Param("customerId") String customerId, @Param("cuserId") String cuserId);
+    List<Cuser> getCuserByAccount(@Param("type") String type, @Param("cuserAccount") String cuserAccount, @Param("customerId") String customerId, @Param("cuserId") String cuserId);
 
     List<Cuser> getCusersByType(@Param("customerId") Long customerId);
 

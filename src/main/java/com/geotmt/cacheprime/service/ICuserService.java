@@ -8,13 +8,14 @@ import java.util.List;
 
 public interface ICuserService {
 
+    List<Cuser> getCuserByAccount(String type, String cuserAccount, String customerId, String cuserId);
 
-    Cuser getCuserByAccount(String type, String cuserAccount, String customerId, String cuserId);
-
-    List<Cuser> getCusersByType(Long customerId);
+    List<Cuser> getCuserByCustomerId(Long customerId);
 
     int updateCuserStatus(CuserStatus cuserStatus);
 
     int updateCuserPwd(String cuserId, String pwd);
+
+    boolean existCuserWithCutomerId(Long customerId);
 
 }

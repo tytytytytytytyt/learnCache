@@ -37,7 +37,7 @@ public class doubleDBTests {
         log.info(userNames);
 
         log.info("查看world 库数据~~~~~~~~~~~~~");
-        List<Cuser> cuserList = cuserService.getCusersByType(10L);
+        List<Cuser> cuserList = cuserService.getCuserByCustomerId(10L);
         String accounts = cuserList.stream().map(cuser -> cuser.getCuserAccount()).collect(Collectors.joining(","));
         log.info(accounts);
     }
