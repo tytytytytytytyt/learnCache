@@ -58,6 +58,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> getUserByRoleId(String roleId) {
+        System.out.println("~~~~~~~~~~~~~~db~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         return this.userMapper.getUserByRoleId(roleId);
     }
 

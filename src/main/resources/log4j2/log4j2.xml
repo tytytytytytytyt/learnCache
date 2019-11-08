@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<configuration monitorInterval="600" status="info">
+    <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+
+    <!--    这里要明确的一点，Configuration的status是log4j2本身的日志打印级别，并是不全局日志级别。而Root下的leve，则恰恰是全局日志级别。-->
+
+    <!--变量配置-->
+    <Properties>
+        <!-- 格式化输出：%date表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %msg：日志消息，%n是换行符-->
+        <!-- %logger{36} 表示 Logger 名字最长36个字符 -->
+        <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+        <!-- 定义日志存储的路径，不要配置相对路径 -->
+        <property name="LOG_HOME" value="/data/apps/log/learnCache" />
+        <property name="FILE_NAME">global</property>
+    </Properties>
+
+    <appenders>
+
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <!--控制台只输出level及其以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+        </console>
+
+        <RollingRandomAccessFile name="INFO" fileName="${LOG_HOME}/${FILE_NAME}.log"
+                                 filePattern="${LOG_HOME}/${FILE_NAME}_%d{yyyy-MM-dd-HH}.log"
+                                 immediateFlush="true">
+
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+        <File name="app_warn" fileName="${LOG_HOME}/app/warn.log" append="true"> <!-- append="false" 为覆盖 -->
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %class{36}.%M()/%L - %msg%xEx%n"/>
+        </File>
+
+        <File name="app_error" fileName="${LOG_HOME}/app/error.log" append="true">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %class{36}.%M()/%L - %msg%xEx%n"/>
+        </File>
+
+
+    </appenders>
+
+    <!--Logger节点用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等。-->
+    <!--然后定义loggers，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="java.sql" level="info"/>
+        <logger name="org.apache.ibatis" level="trace"/>
+        <logger name="org.mybatis" level="trace" />
+        <Logger name="org.springframework" level="info" />
+        <Logger name="com.geotmt.cacheprime.dao" level="trace" />
+
+
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="INFO"/>
+            <appender-ref ref="app_warn"/>
+            <appender-ref ref="app_error"/>
+        </root>
+    </loggers>
+
+</configuration>

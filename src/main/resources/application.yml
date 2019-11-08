@@ -6,10 +6,6 @@ spring:
 server:
   port: 8010
 
-  # log config
-#logging:
-#  config: classpath:log4j2.xml
 
 logging:
-  config: classpath:log4j2.xml
-
+  config: classpath:log4j2/log4j2.xml

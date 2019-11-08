@@ -38,7 +38,7 @@ hello:          ##  数据源配置  springbootdb_cluster
     url: jdbc:mysql://localhost:3306/hello?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
     username: root
     password: 123456
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
 
 
 world:          ## cluster 数据源配置
@@ -46,7 +46,7 @@ world:          ## cluster 数据源配置
     url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
     username: root
     password: 123456
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
 
 
 

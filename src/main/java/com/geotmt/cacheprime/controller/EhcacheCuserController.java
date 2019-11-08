@@ -1,8 +1,10 @@
 package com.geotmt.cacheprime.controller;
 
 import com.geotmt.cacheprime.entity.Cuser;
+import com.geotmt.cacheprime.entity.User;
 import com.geotmt.cacheprime.entity.bo.CuserStatus;
 import com.geotmt.cacheprime.service.ICuserService;
+import com.geotmt.cacheprime.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +20,9 @@ public class EhcacheCuserController {
 
    @Autowired
    private ICuserService cuserService;
+
+    @Autowired
+    private IUserService userService;
 
     @RequestMapping(value = "/cuserbyid", method = RequestMethod.GET)
     public Object getCuserByCustId(@RequestParam(value = "id") long id) {
@@ -64,6 +69,15 @@ public class EhcacheCuserController {
         return cuserService.existCuserWithCutomerId(id);
     }
 
+    /**
+     * 测试log4j2中sql日志
+     * @param roleId
+     * @return
+     */
+    @RequestMapping(value = "/getUserByRoleId", method = RequestMethod.GET)
+    public List<User> getUserByRoleId(@RequestParam(value = "roleId") String roleId) {
+        return userService.getUserByRoleId(roleId);
+    }
 
 
 
