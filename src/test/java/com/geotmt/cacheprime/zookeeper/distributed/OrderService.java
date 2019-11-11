@@ -6,32 +6,27 @@
  */
 package com.geotmt.cacheprime.zookeeper.distributed;
 
+import lombok.extern.log4j.Log4j2;
+
+
+
 public class OrderService implements Runnable {
-	private OrderNumGenerator orderNumGenerator = new OrderNumGenerator();
-	private ZkDistributeLock extLock = new ZkDistributeLock();
 
+	private OrderNumGenerator generator = new OrderNumGenerator();
+	private ZkDistributeLock lock = new ZkDistributeLock();
+
+
+	@Override
 	public void run() {
-		getNumber();
+		lock.getLock();
+		System.out.println("threadName ："+Thread.currentThread().getName()+" seq :"+ generator.getNumber());
+		lock.unLock();
 	}
 
-	public void getNumber() {
-		try {
-			extLock.getLock();
-			String number = orderNumGenerator.getNumber();
-			System.out.println("线程:" + Thread.currentThread().getName() + ",生成订单id:" + number);
-		} catch (Exception e) {
-
-		} finally {
-			extLock.unLock();
-		}
-	}
 
 	public static void main(String[] args) {
-		System.out.println("多线程生成number");
-		// OrderService orderService = new OrderService();
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 100 ; i++) {
 			new Thread(new OrderService()).start();
 		}
 	}
-
 }
