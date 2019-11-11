@@ -1,7 +1,6 @@
-package com.geotmt.cacheprime.zookeeper;
+package com.geotmt.cacheprime.zookeeper.LoadBalance;
 
 import org.I0Itec.zkclient.ZkClient;
-import org.assertj.core.util.Lists;
 
 import java.io.BufferedReader;
 import java.io.IOException;
