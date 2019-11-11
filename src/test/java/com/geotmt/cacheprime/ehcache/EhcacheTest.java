@@ -1,4 +1,4 @@
-package com.geotmt.cacheprime;
+package com.geotmt.cacheprime.ehcache;
 
 
 import lombok.extern.log4j.Log4j2;

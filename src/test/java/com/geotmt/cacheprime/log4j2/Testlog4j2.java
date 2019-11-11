@@ -1,4 +1,4 @@
-package com.geotmt.cacheprime;
+package com.geotmt.cacheprime.log4j2;
 
 import com.geotmt.cacheprime.utils.OkHttpUtil;
 import com.geotmt.cacheprime.utils.bean.HttpResult;

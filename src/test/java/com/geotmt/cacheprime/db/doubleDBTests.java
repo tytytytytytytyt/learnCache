@@ -1,4 +1,4 @@
-package com.geotmt.cacheprime;
+package com.geotmt.cacheprime.db;
 
 
 
