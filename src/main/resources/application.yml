@@ -4,7 +4,7 @@ spring:
 
 
 server:
-  port: 8010
+  port: 8011
 
 
 logging:
