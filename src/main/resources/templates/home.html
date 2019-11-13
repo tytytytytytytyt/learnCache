@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A项目主页</title>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            type : "GET",
+            async : false,
+            url : "http://api.geotmt.com/a/forwardB",
+            dataType : "json",
+            success : function(data) {
+                alert(data["retCode"]);
+            },
+            error : function() {
+                alert('fail');
+            }
+        });
+
+    });
+</script>
+<h3>欢迎来到主页</h3>
+    <!--Thymeleaf 语法取值-->
+    姓名：<span th:text="${name}">未知</span>
+    年龄：<span th:text="${age}">未知</span>
+</body>
+</html>
