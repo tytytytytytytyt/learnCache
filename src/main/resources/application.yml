@@ -13,7 +13,7 @@ spring:
     suffix: .html
 
 server:
-  port: 8011
+  port: 8010
 
 
 logging:
