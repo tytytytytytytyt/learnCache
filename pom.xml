@@ -128,6 +128,11 @@
         </dependency>
 
 
+        <!-- 导入aop依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
         <!-- 导入Spring Boot的thymeleaf依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
