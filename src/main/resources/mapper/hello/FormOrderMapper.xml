@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geotmt.cacheprime.dao.hello.FormOrderMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="userBaseResultMap1" type="com.geotmt.cacheprime.entity.FormOrder">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="detail" property="detail" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, account, name, detail
+	</sql>
+
+
+
+
+
+
+
+	<insert id="insertFormOrder" parameterType="com.geotmt.cacheprime.entity.FormOrder">
+		insert into formorder
+		(
+        name,
+        detail
+        ) values
+            (
+            #{order.name,jdbcType=VARCHAR},
+            #{order.detail,jdbcType=VARCHAR}
+            )
+	</insert>
+
+
+
+</mapper>

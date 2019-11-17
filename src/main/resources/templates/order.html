@@ -1,0 +1,17 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>表单提交</title>
+</head>
+<body>
+
+	<form action="/order/insert" method="post">
+		<input type="hidden" name="token"   th:value="${token}">  <!--value="${token}"-->
+		   <span>订单名称</span><input
+			type="text" name="name"><br>
+		    <span>订单描述</span><input
+			type="text" name="detail"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
