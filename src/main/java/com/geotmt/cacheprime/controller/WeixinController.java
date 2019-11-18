@@ -19,7 +19,7 @@ public class WeixinController {
     private WeixinConfig weixinConfig;
 
     @RequestMapping("/callback")
-    public void callback(String code, HttpServletRequest request) {
+    public String callback(String code, HttpServletRequest request) {
         // 1.使用Code 获取 access_token
         String accessTokenUrl = weixinConfig.getAccessTokenUrl(code);
         JSONObject resultAccessToken = HttpClientUtils.httpGet(accessTokenUrl);
@@ -27,7 +27,7 @@ public class WeixinController {
 
         if (containsKey) {
             request.setAttribute("errorMsg", "登录异常，请重试!");
-            return ;
+            return "登录异常，请重试";
         }
         // 2.使用access_token获取用户信息
         String accessToken = resultAccessToken.getString("access_token");
@@ -39,6 +39,8 @@ public class WeixinController {
         request.setAttribute("nickname", userInfoResult.getString("nickname"));
         request.setAttribute("city", userInfoResult.getString("city"));
         request.setAttribute("headimgurl", userInfoResult.getString("headimgurl"));
+        String echostr = request.getParameter("echostr"); // 随机字符串
+        return echostr;
     }
 
 

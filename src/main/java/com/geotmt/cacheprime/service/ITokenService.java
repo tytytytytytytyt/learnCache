@@ -1,8 +1,12 @@
 package com.geotmt.cacheprime.service;
 
+import com.geotmt.cacheprime.base.common.PayToken;
+
 public interface ITokenService {
 
-    public String putToken(String name);
+    String putToken(String name);
 
-    public String getUserByToken(String token);
+    String getUserByToken(String token);
+
+    String getPayToken(PayToken payToken);
 }

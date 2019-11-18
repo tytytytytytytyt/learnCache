@@ -1,5 +1,6 @@
 package com.geotmt.cacheprime.utils;
 
+import com.geotmt.cacheprime.base.common.ConstUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,9 +22,9 @@ public class TokenUtil {
 
     public String getToken(){
         lock.lock();
-        long increment = redisUtils.increment(ConstUtil.TOKENID);
+        long increment = redisUtils.increment(ConstUtil.TOKEN_ID);
         String token = CommonUtil.getRandomString(10) + increment;
-        redisUtils.set(token,token,ConstUtil.TOKENTIMEOUT);
+        redisUtils.set(token,token,ConstUtil.TOKEN_TIMEOUT);
         lock.unlock();
         return token;
 
