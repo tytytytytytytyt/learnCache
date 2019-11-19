@@ -14,11 +14,23 @@ public class DistributeTransaController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 分布式实务
+     * @Transactional(value = "transactionManager")
+     */
 
     @RequestMapping("/transaction")
     public void transaction() {
-
         userService.transaction();
+    }
 
+    @RequestMapping("/transaction2")
+    public void transaction2(Integer num) {
+        userService.transaction2(num);
+    }
+
+    @RequestMapping("/transaction3")
+    public void transaction3(Integer num) {
+        userService.transaction3(num);
     }
 }

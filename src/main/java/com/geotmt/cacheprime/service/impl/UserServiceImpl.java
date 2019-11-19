@@ -27,7 +27,6 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
     @Autowired
     private CuserMapper cuserMapper;
-
     @Autowired
     private RedisUtils redisUtils;
 
@@ -75,11 +74,28 @@ public class UserServiceImpl implements IUserService {
     /**
      * 分布式实务
      */
-    @Transactional(value = "transactionManager")
     @Override
+    @Transactional(value = "transactionManager")
     public void transaction() {
         cuserMapper.setCuserStatus("11",-10);
         System.out.println("!!!!!!!!!!!!!!!!!!");
         userMapper.updatePwdById("44","9999");
     }
+
+    @Override
+    @Transactional(value = "transactionManager")
+    public void transaction2(Integer num)  {
+        cuserMapper.setCuserStatus("11",-10);
+        int a = 10/num;
+        userMapper.updatePwdById("44","9999");
+    }
+
+    @Override
+    @Transactional(value = "jtaWorldTransactionManager")
+    public void transaction3(Integer num) {
+        int i = cuserMapper.setCuserStatus("11", num);
+        log.info(i);
+
+    }
+
 }

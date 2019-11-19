@@ -18,4 +18,8 @@ public interface IUserService  {
 
     void transaction();
 
+    void transaction2(Integer num);
+
+    void transaction3(Integer num);
+
 }
