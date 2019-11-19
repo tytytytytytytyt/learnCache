@@ -16,4 +16,6 @@ public interface IUserService  {
 
     List<User> getUserByDeptId(String deptId);
 
+    void transaction();
+
 }

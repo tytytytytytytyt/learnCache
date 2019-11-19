@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: @profileActive@
+    active: jta
   thymeleaf:
     #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
     mode: HTML5

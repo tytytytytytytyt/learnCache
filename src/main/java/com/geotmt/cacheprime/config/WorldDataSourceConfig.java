@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
  * @Version 1.0
  **/
 // 扫描 Mapper 接口并容器管理
+@Profile(value = {"dev","test"})
 @Configuration
 @MapperScan(basePackages = WorldDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "worldSqlSessionFactory")
 public class WorldDataSourceConfig {
@@ -42,8 +44,9 @@ public class WorldDataSourceConfig {
     @Value("${world.datasource.driverClassName}")
     private String driverClass;
 
-    @Bean(name = "worldDataSource")
     @Primary
+    @Profile(value = {"dev","test"})
+    @Bean(name = "worldDataSource")
     public DataSource masterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
@@ -53,14 +56,16 @@ public class WorldDataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name = "worldTransactionManager")
     @Primary
+    @Profile(value = {"dev","test"})
+    @Bean(name = "worldTransactionManager")
     public DataSourceTransactionManager masterTransactionManager() {
         return new DataSourceTransactionManager(masterDataSource());
     }
 
-    @Bean(name = "worldSqlSessionFactory")
     @Primary
+    @Profile(value = {"dev","test"})
+    @Bean(name = "worldSqlSessionFactory")
     public SqlSessionFactory worldSqlSessionFactory(@Qualifier("worldDataSource") DataSource worldDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();

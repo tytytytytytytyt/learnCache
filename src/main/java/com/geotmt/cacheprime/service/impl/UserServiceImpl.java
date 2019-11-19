@@ -3,6 +3,7 @@ package com.geotmt.cacheprime.service.impl;
 
 
 import com.geotmt.cacheprime.dao.hello.UserMapper;
+import com.geotmt.cacheprime.dao.world.CuserMapper;
 import com.geotmt.cacheprime.entity.User;
 import com.geotmt.cacheprime.service.IUserService;
 import com.geotmt.cacheprime.utils.RedisUtils;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 
@@ -22,6 +25,8 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private CuserMapper cuserMapper;
 
     @Autowired
     private RedisUtils redisUtils;
@@ -65,5 +70,16 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> getUserByDeptId(String deptId) {
         return this.userMapper.getUserByDeptId(deptId);
+    }
+
+    /**
+     * 分布式实务
+     */
+    @Transactional(value = "transactionManager")
+    @Override
+    public void transaction() {
+        cuserMapper.setCuserStatus("11",-10);
+        System.out.println("!!!!!!!!!!!!!!!!!!");
+        userMapper.updatePwdById("44","9999");
     }
 }

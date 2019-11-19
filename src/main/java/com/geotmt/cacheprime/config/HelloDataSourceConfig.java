@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+@Profile(value = {"dev","test"})
 @Configuration
 // 扫描 Mapper 接口并容器管理
 @MapperScan(basePackages = HelloDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "helloSqlSessionFactory")
@@ -34,6 +36,7 @@ public class HelloDataSourceConfig {
     @Value("${hello.datasource.driverClassName}")
     private String driverClass;
 
+    @Profile(value = {"dev","test"})
     @Bean(name = "helloDataSource")
     public DataSource clusterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
@@ -43,12 +46,12 @@ public class HelloDataSourceConfig {
         dataSource.setPassword(password);
         return dataSource;
     }
-
+    @Profile(value = {"dev","test"})
     @Bean(name = "helloTransactionManager")
     public DataSourceTransactionManager clusterTransactionManager() {
         return new DataSourceTransactionManager(clusterDataSource());
     }
-
+    @Profile(value = {"dev","test"})
     @Bean(name = "helloSqlSessionFactory")
     public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("helloDataSource") DataSource helloDataSource)
             throws Exception {
