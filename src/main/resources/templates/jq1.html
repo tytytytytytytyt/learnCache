@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery Test1</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        // 1.css选择器：以字符穿的方式传入 如"button"
+        // 2.传递一个dom对象，或者document对象 ，window对象给${}
+        // 3.传递一个Html文本给${},这个时候会自动创建这个元素
+        // 4.传递一个函数给${}
+        $(function(){
+            $("button").click(function () {
+                $("p").css("color","red").hide(200);
+                $("<h3>JAVA中文网</h3>").appendTo(document.body);
+            })
+        })
+
+
+        // $(document).ready(function(){
+        //     $("button").click(function () {
+        //         $("p").css("color","red").hide(200);
+        //         $("<h3>java中文网</h3>").appendTo(document.body);
+        //     })
+        // })
+    </script>
+</head>
+<body>
+    <button type="button" name="button">请点击我</button>
+    <p>内容一</p>
+    <p>内容二</p>
+    <p>内容三</p>
+    <p>内容四</p>
+</body>
+</html>
