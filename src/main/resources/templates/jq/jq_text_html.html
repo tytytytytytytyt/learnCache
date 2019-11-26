@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery Test2</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            $("#btn1").click(function () {
+                var text = $("li").eq(0).text();
+                var html = $("li").eq(0).text();
+                console.log("text:"+text +" html:"+html)
+
+                $("li").eq(1).text("java中文网");
+                $("li").eq(2).text("java中文网");
+                // text()原样输出  html(）会渲染html标签
+                $("li").eq(3).text('<img  src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=331369441,4066769691&amp;fm=26&amp;gp=0.jpg" alt="美女照片">');
+                $("li").eq(4).html('<img  src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=331369441,4066769691&amp;fm=26&amp;gp=0.jpg" alt="美女照片">');
+
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+
+    <button type="button" id="btn1">获取用户名</button>
+
+    <ul>
+        <li>小米加步枪0</li>
+        <li>小米加步枪1</li>
+        <li>小米加步枪2</li>
+        <li>小米加步枪3</li>
+        <li>小米加步枪4</li>
+    </ul>
+</body>
+</html>
