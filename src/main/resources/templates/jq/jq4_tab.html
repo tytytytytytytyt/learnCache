@@ -8,7 +8,10 @@
     <script>
         $(document).ready(function () {
             $(".level1>a").click(function () {
-                $(this).addClass("current").next("ul").show().parent().siblings().children("a").removeClass("current").next("ul").hide();
+                $(this).addClass("current")     //给当前元素添加"current"样式
+                    .next("ul").show()          //下一个元素显示
+                    .parent().siblings().children("a").removeClass("current") //父元素的兄弟元素的子元素a移除"current"样式
+                    .next("ul").hide();                                     //它们的下一个元素隐藏
             })
 
         })
