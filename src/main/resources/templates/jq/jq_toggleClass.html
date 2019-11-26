@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery Test1</title>
+    <style>
+        .red {
+            border-radius: 20px;
+            box-shadow: 10px 10px 5px #ff6600;
+        }
+
+        .black {
+            border-radius: 50%;
+            box-shadow: 6px 6px 3px #42556B;
+        }
+
+    </style>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+        $(function(){
+            $("#btn1").click(function () {
+
+                //addClass(classes)    为每个匹配的元素添加指定的类名
+                $("input").addClass("colorRed borderBlack");
+
+                //hasClass(class)    判断匹配元素集合中是否至少有一个包含了指定的css类,如果有一个含有指定css类,则返回true
+                alert($("img").hasClass("red"));
+
+                //removeClass([classes])    从匹配元素中移除所有或指定的css类
+                $("input").removeClass("colorRed borderBlack");
+
+                //toggleClass(classes)    如果存在(不存在)就删除(添加)指定类
+                $("input").toggleClass("colorRed borderBlack");
+
+                //toggleClass(classes,switch)    当switch是true时,添加类,switch为false时,删除类
+                $("input").toggleClass("colorRed borderBlack", true);
+                $("img").toggleClass("red");
+
+
+
+            })
+        })
+    </script>
+</head>
+<body>
+<button type="button" id="btn1">toggleclass</button>
+<br>
+<img  src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=331369441,4066769691&amp;fm=26&amp;gp=0.jpg" alt="美女照片">
+</body>
+</html>
