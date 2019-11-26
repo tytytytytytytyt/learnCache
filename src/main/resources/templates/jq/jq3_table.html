@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery Test2</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        /*
+	添加注释：
+	在一个id为table的表格的tbody中，如果每行最后一列中的checkbox没有被禁用，
+	则把这行的背景设为红色
+	*/
+        $(document).ready(function () {
+           $("#table tr:has(td:last:has(:checkbox:enabled))").css("background","blue");
+        })
+    </script>
+</head>
+<body>
+    <table id="table">
+        <tbody>
+        <tr>
+            <td>第1行</td>
+            <td>第1行</td>
+            <td>第1行</td>
+            <td>第1行</td>
+            <td>第1行<input type="checkbox" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td>第2行</td>
+            <td>第2行</td>
+            <td>第2行</td>
+            <td>第2行</td>
+            <td>第2行<input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>第3行</td>
+            <td>第3行</td>
+            <td>第3行</td>
+            <td>第3行</td>
+            <td>第3行<input type="checkbox" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td>第4行</td>
+            <td>第4行</td>
+            <td>第4行</td>
+            <td>第4行</td>
+            <td>第4行<input type="checkbox" /></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

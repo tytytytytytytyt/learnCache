@@ -10,17 +10,26 @@
             console.log("选择符为："+$("li").selector);
             console.log("上下文属性："+$("li").context);
             console.log("版本号属性："+$("li").jquery);
-            $("button").click(function () {
+            $("#btn2").click(function () {
                 $("li").each(function (i) {
                     $(this).css("color","blue").html(i+"----少年锦衣卫");
                 })
             })
+
+            $("#btn1").click(function () {
+                var inputVal = $("#input").val();
+                alert(inputVal)
+            })
+
         })
 
     </script>
 </head>
 <body>
-    <button type="button" name="button">点击变色</button>
+    用户名：<input type="text" id="input">
+    <button type="button" id="btn1">获取用户名</button>
+    <br><br>
+    <button type="button" name="button" id="btn2">点击变色</button>
     <ul>
         <li>小米加步枪1</li>
         <li>小米加步枪2</li>
