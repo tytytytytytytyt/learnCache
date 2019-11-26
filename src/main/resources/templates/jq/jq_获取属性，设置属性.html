@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery Test1</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+        $(function(){
+
+            $("#btn1").click(function () {
+                // 获取属性
+                var src = $("img").attr("src");
+                console.log(src);
+                // 设置属性
+                $("img").attr("src","https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=281197293,3156039620&fm=26&gp=0.jpg");
+                // 移除属性
+                $("img").removeAttr("alt");
+            })
+
+            $("#btn2").click(function () {
+                // 移除属性
+                $("img").removeAttr("alt");
+                // 获取属性
+                var src = $("img").attr("alt");
+                alert(src);
+            })
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <button type="button" id="btn1">更换照片</button>
+    <button type="button" id="btn2">移除属性</button>
+    <br>
+    <img  src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=331369441,4066769691&amp;fm=26&amp;gp=0.jpg" alt="美女照片">
+</body>
+</html>
