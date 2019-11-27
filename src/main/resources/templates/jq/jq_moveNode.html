@@ -8,23 +8,13 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
-           /*
-            插入节点，插入节点后的顺序为：
-            雪梨
-            苹果
-            橘子
-            其它
-            菠萝
-            香蕉*/
-            var $li_1 = $("<li title='香蕉'>香蕉</li>");
-            var $li_ohter = $("<li title='其它'>其它</li>");
-            var $pre_li =$("<li title='雪梨'>雪梨</li>");
-            var $le_eq_1 = $("ul li").eq(1);
-
-            $("ul").prepend($pre_li);
-            $li_ohter.insertAfter($le_eq_1);
-            $("ul").append($li_1);
+            /**
+             * 移动节点
+             * 将苹果与橘子互换位置
+             */
+           var $li_0 =  $("ul li:eq(0)");
+           var $li_1 =  $("ul li:eq(1)");
+           $li_1.insertBefore($li_0);
 
         })
     </script>
