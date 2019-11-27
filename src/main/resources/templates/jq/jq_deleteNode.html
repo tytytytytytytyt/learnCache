@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3-2-3</title>
+    <!--   引入jQuery -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btn1").click(function () {
+                var $li_0 =  $("ul li:eq(0)");
+                $li_0.remove();
+            })
+
+            $("#btn2").click(function () {
+                $("ul li[title!='菠萝']").remove();
+            })
+
+            // 找到第二个li元素节点后，清空此元素里的内容
+            $("#btn3").click(function () {
+                $("ul li:eq(1)").empty();
+            })
+        })
+    </script>
+</head>
+<body>
+
+<input type="button" value="删除第一个节点" id="btn1"/>
+<input type="button" value="把<li>元素中属性title不等于菠萝的\<li\>元素删除" id="btn2"/>
+<input type="button" value="找到第二个<li>元素节点后，清空此元素里的内容" id="btn3"/>
+
+<p title="选择你最喜欢的水果." >你最喜欢的水果是?</p>
+<ul>
+    <li title='苹果'>苹果</li>
+    <li title='橘子'>橘子</li>
+    <li title='菠萝'>菠萝</li>
+</ul>
+
+</body>
+</html>
+
