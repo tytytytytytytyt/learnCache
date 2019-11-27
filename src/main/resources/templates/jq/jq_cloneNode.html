@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3-2-3</title>
+    <!--   引入jQuery -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        /**
+         * clone() 方法中没有参数的话，复制出来的元素不可以再次复制
+         *
+         * clone(true) 方法中有参数的话，可以复制自己，并且他的副本也有同样功能
+         */
+
+
+        $(document).ready(function () {
+           $("ul li").click(function () {
+
+               $(this).clone(true).appendTo("ul");
+           })
+        })
+    </script>
+</head>
+<body>
+
+<p title="选择你最喜欢的水果." >你最喜欢的水果是?</p>
+<ul>
+    <li title='苹果'>苹果</li>
+    <li title='橘子'>橘子</li>
+    <li title='菠萝'>菠萝</li>
+</ul>
+
+</body>
+</html>
+
