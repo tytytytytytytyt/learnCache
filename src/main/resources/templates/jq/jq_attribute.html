@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>京东快报</title>
+    <link rel="stylesheet" href="css/newStyle.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        //
+        // $("#news a[class]").css("background","#ccc");
+
+        // $("#news a[class='hot']").css("background","#ccc");
+        // //获取#news a并且a的class值不等于hot
+        // $("#news a[class!='hot']").css("background","#ccc");
+
+        // $("#news a[href^='www']").css("background","#ccc");
+        // //a的结尾是html
+        // $("#news a[href$='html']").css("background","#ccc");
+        // //a标签href属性值包含"K2"的元素
+        // $("#news a[href*='k2']").css("background","chartreuse");
+        $(document).ready(function () {
+            // 获取#news a并且a包含class属性名
+            $("#btn1").click(function () {
+               $("#news a[class]").css("background","#ccc");
+            })
+
+            // 获取#news a并且a的class值等于hot
+            $("#btn2").click(function () {
+                $("#news a[class='hot']").css("background","#B02F4A");
+            })
+
+            // 获取#news a并且a的class值不等于hot
+            $("#btn3").click(function () {
+                $("#news a[class!='hot']").css("background","#B02F4A");
+            })
+
+            // a的href要以www开头
+            $("#btn4").click(function () {
+                $("#news a[href^='www']").css("background","red");
+            })
+
+            // a的结尾是html
+            $("#btn5").click(function () {
+                $("#news a[href$='html']").css("color","yellow");
+            })
+
+            // a标签href属性值包含"k2"的元素
+            $("#btn6").click(function () {
+                $("#news a[href*='k2']").css("color","chartreuse");
+            })
+        })
+    </script>
+</head>
+<body>
+<section id="news">
+    <input type="button" value="获取#news a并且a包含class属性名" id="btn1"/>
+    <input type="button" value="获取#news a并且a的class值等于hot" id="btn2"/>
+    <input type="button" value="获取#news a并且a的class值不等于hot." id="btn3"/>
+    <input type="button" value="a的href要以www开头." id="btn4"/>
+    <input type="button" value="a的结尾是html." id="btn5"/>
+    <input type="button" value="a标签href属性值包含k2的元素" id="btn6"/>
+
+
+
+    <header>京东快报<a href="#" class="more">更多 > </a></header>
+    <ul>
+        <li><a href="sale.jd.com/act/h7mf8.html" class="hot">
+            <span>[618]</span>志玲姐姐：墨镜300减30</a></li>
+        <li><a href="www.jd.com/news.aspx?id=29257">
+            <span>[公告]</span>京东无锡馆正式启动</a></li>
+        <li><a href="sale.jd.com/act/k2ad45v.html">
+            <span>[特惠]</span>99元抢平板！品牌配件199-100</a></li>
+        <li><a href="www.jd.com/news.aspx?id=29252">
+            <span>[公告]</span>节能领跑京东先行</a></li>
+        <li><a href="sale.jd.com/act/ugk2937w.html" class="last">
+            <span>[特惠]</span>高洁丝实力撩货，领券五折</a></li>
+    </ul>
+</section>
+</body>
+</html>
