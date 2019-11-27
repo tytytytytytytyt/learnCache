@@ -48,6 +48,11 @@
             $("#btn6").click(function () {
                 $("#news a[href*='k2']").css("color","chartreuse");
             })
+
+            // 找到所有含有 id 属性，并且它的 name 属性是以 man 结尾的input标签的元素
+            $("#btn7").click(function () {
+                $("input[id][name$='man']").css("background","orange");
+            })
         })
     </script>
 </head>
@@ -59,7 +64,7 @@
     <input type="button" value="a的href要以www开头." id="btn4"/>
     <input type="button" value="a的结尾是html." id="btn5"/>
     <input type="button" value="a标签href属性值包含k2的元素" id="btn6"/>
-
+    <input type="button" value="找到所有含有 id 属性，并且它的 name 属性是以 man 结尾的input标签" id="btn7"/>
 
 
     <header>京东快报<a href="#" class="more">更多 > </a></header>
@@ -75,6 +80,7 @@
         <li><a href="sale.jd.com/act/ugk2937w.html" class="last">
             <span>[特惠]</span>高洁丝实力撩货，领券五折</a></li>
     </ul>
+    <input id="letterman" name="new-letterman" />
 </section>
 </body>
 </html>
