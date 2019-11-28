@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3-2-3</title>
+    <!--   引入jQuery -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                resetStyle();
+                $("p").next().css('background-color', 'red');
+            })
+            $("#btn2").click(function () {
+                resetStyle();
+                $("ul").filter("#one").prev().css('background-color', 'red');
+            })
+            $("#btn3").click(function () {
+                resetStyle();
+                $("#one li[title='苹果']").siblings().css('background-color', 'red');
+            });
+            $("#btn4").click(function () {
+                resetStyle();
+                $(".item-1").parent().css('background-color', 'red');
+            });
+            $("#btn5").click(function () {
+                resetStyle();
+                $(".item-1").parents("ul").css('background-color', 'red');
+            });
+            $("#btn6").click(function () {
+                resetStyle();
+                $(".item-1").closest("ul").css('background-color', 'red');
+            });
+            $("#btn7").click(function () {
+                var childred = $("#one").children();
+                for (var i = 0; i<childred.length ; i++) {
+                    alert(childred[i].innerHTML);
+                }
+            });
+
+            function resetStyle(){
+                $("*").removeAttr("style");
+            }
+
+        })
+    </script>
+</head>
+<body>
+
+
+<input type="button" value="获取p标签的下一个节点" id="btn1"/>
+<input type="button" value="获取ul标签的上一个节点" id="btn2"/>
+<input type="button" value="获取苹果节点的兄弟节点" id="btn3"/>
+<input type="button" value="获取最近的父节点" id="btn4"/>
+<input type="button" value="获取所有的父节点" id="btn5"/>
+<input type="button" value="获取最近的节点" id="btn6"/>
+<input type="button" value="获取ul.one下的所有子节点" id="btn7"/>
+
+<p title="选择你最喜欢的水果." >你最喜欢的水果是?</p>
+<ul id="one">
+    <li title='苹果'>苹果</li>
+    <li title='橘子'>橘子</li>
+    <li title='菠萝'>菠萝</li>
+</ul>
+
+<ul id="two" class="level-1">
+    <li class="item-i">I</li>
+    <li id="ii" class="item-ii">II
+        <ul class="level-2">
+            <li class="item-a"><a href="#" class="item-1">Home</a></li>
+            <li class="item-b"><a href="#" class="item-2">Product</a></li>
+            <li class="item-c"><a href="#" class="item-3">About</a></li>
+        </ul>
+    </li>
+    <li class="item-iii">III</li>
+</ul>
+
+</body>
+</html>
+
