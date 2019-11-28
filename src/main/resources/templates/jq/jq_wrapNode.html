@@ -16,7 +16,9 @@
             /**
              * wrapAll 是将div2下都有的strong标签用b标签包裹起来
              */
-            $("#div2 strong").wrapAll("<b></b>")
+            $("#div2 strong").wrapAll("<b></b>");
+
+            $("#div3 strong").wrapInner("<b></b>");
         });
         //]]>
     </script>
@@ -35,6 +37,17 @@
 </ul>
 <div id="div2">
     <strong title="选择你最喜欢的水果." >你最喜欢的水果是?</strong>
+    <strong title="选择你最喜欢的水果." >你最喜欢的水果是?</strong>
+</div>
+
+<ul>
+    <li title='苹果'>苹果</li>
+    <li title='橘子'>橘子</li>
+    <li title='菠萝'>菠萝</li>
+</ul>
+<div id="div3">
+    <strong title="选择你最喜欢的水果." >你最喜欢的水果是?</strong>
+    <div>中间的元素</div>
     <strong title="选择你最喜欢的水果." >你最喜欢的水果是?</strong>
 </div>
 
