@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>4-2-3</title>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		*{margin:0;padding:0;}
+		body { font-size: 13px; line-height: 130%; padding: 60px }
+		#panel { width: 300px; border: 1px solid #0050D0 }
+		#pane2 { width: 300px; border: 1px solid #af7bd0 }
+		.head { height:24px;line-height:24px;text-indent:10px;background: #96E555; cursor: pointer;width:100%; }
+		.content { padding: 10px; text-indent:24px; border-top: 1px solid #0050D0;display:block;display:none; }
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			var $title = $("#panel h5");
+			$title.bind("click",function () {
+				var $context = $title.next("div");
+				if($context.is(":hidden")){
+					$context.show();
+				}else {
+					$context.hide();
+				}
+			})
+			var $mouseTitle = $("#pane2 h5.head");
+
+			$mouseTitle.mouseover(function () {
+				$(this).next().show();
+			}).mouseout(function () {
+				$(this).next().hide();
+			})
+		})
+	</script>
+</head>
+<body>
+<div id="panel">
+	<h5 class="head">什么是jQuery?</h5>
+	<div class="content">
+		jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个由 John Resig 创建于2006年1月的开源项目。jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+	</div>
+</div>
+
+<div id="pane2">
+	<h5 class="head">如何科学家一样思考Python?</h5>
+	<div class="content">
+		书以培养读者以计算机科学家一样的思维方式来理解Python语言编程。贯穿全书的主体是如何思考、设计、开发的方法，而具体的编程语言，只是提供了一个具体场景方便介绍的媒介。
+	</div>
+</div>
+</body>
+</html>
