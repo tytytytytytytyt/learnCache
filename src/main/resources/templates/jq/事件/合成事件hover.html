@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>4-3-1</title>
+	<style>
+		*{margin:0;padding:0;}
+		body { font-size: 13px; line-height: 130%; padding: 60px }
+		#panel { width: 300px; border: 1px solid #0050D0 }
+		.head { height:24px;line-height:24px;text-indent:10px;background: #96E555; cursor: pointer;width:100%; }
+		.content { padding: 10px; text-indent:24px; border-top: 1px solid #0050D0;display:block;display:none; }
+	</style>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	/**
+	 * hover([over,]out)
+	 概述
+	 一个模仿悬停事件（鼠标移动到一个对象上面及移出这个对象）的方法。这是一个自定义的方法，它为频繁使用的任务提供了一种“保持在其中”的状态。
+	 当鼠标移动到一个匹配的元素上面时，会触发指定的第一个函数。当鼠标移出这个元素时，会触发指定的第二个函数。
+	 而且，会伴随着对鼠标是否仍然处在特定元素中的检测（例如，处在div中的图像），
+	 如果是，则会继续保持“悬停”状态，而不触发移出事件（修正了使用mouseout事件的一个常见错误）。
+	 */
+	$("#panel h5.head").hover(function () {
+		$(this).next().show();
+	},function () {
+		$(this).next().hide();
+	})
+})
+</script>
+</head>
+<body>
+<div id="panel">
+	<h5 class="head">什么是jQuery?</h5>
+	<div class="content">
+		jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个由 John Resig 创建于2006年1月的开源项目。jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+	</div>
+</div>
+</body>
+</html>
