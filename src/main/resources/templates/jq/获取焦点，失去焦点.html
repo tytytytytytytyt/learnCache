@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>3-10-2-1</title>
+	<!--   引入jQuery -->
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		$(function(){
+			$("#address").focus(function () {
+				if($(this).val() == "请输入邮箱地址"){
+					$(this).val("");
+				}
+			})
+			$("#address").blur(function () {
+				if($(this).val() == ""){
+					$(this).val("请输入邮箱地址");
+				}
+			})
+			$("#password").focus(function () {
+				if($(this).val() == "请输入邮箱密码"){
+					$(this).val("");
+				}
+			})
+			$("#password").blur(function () {
+				if($(this).val() == ""){
+					$(this).val("请输入邮箱密码");
+				}
+			})
+
+
+		});
+		//]]>
+	</script>
+</head>
+<body>
+<input type="text" id="address" value="请输入邮箱地址"/>   <br/><br/>
+<input type="text" id="password" value="请输入邮箱密码"/>  <br/><br/>
+<input type="button" value="登录"/>
+</body>
+</html>
+
