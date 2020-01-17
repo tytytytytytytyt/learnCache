@@ -8,7 +8,7 @@
 <script type="text/javascript" src="static/js/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="static/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript" src="static/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <body style="background-color: #f1f1f1; padding-bottom: 0">
 
 <div th:insert="~{header :: nav}"></div>
@@ -43,8 +43,29 @@
                         </div>
                         <div class="form-group ">
                             <div class="input-group col-md-6 col-md-offset-3">
-                                <div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
                                 <input type="text" class="form-control" name="birthday" placeholder="生日" id="birthdaypicker">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-check"></span></div>
+                                <select class="form-control" name="sex">
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                                <input type="text" class="form-control" name="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
+                                <input type="text" class="form-control" name="phone" placeholder="手机">
                             </div>
                         </div>
                         <br>
@@ -75,7 +96,9 @@
 
 <script>
     $('#birthdaypicker').datetimepicker({
-        format: 'yyyy-mm-dd'
+        language:  'zh',
+        format: 'yyyy-mm-dd',
+        minView: "month"//设置只显示到月份
     });
 </script>
 </html>

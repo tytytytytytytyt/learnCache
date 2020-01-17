@@ -15,4 +15,6 @@
 		weekStart: 1,
 		format: "dd/mm/yyyy hh:ii"
 	};
+
+
 }(jQuery));
