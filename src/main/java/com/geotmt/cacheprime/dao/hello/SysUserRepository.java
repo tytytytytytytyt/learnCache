@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SystemUserRepository extends CrudRepository<SysUserDO,Long> {
+public interface SysUserRepository extends CrudRepository<SysUserDO,Long> {
 
     SysUserDO findByUsername(String userName);
 }

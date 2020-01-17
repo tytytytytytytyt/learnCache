@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "sys_user")
 @Data
 public class SysUserDO {
 
@@ -82,13 +82,14 @@ public class SysUserDO {
     /**
      * 角色id
      */
-    private String roleid;
-
+    @Column(name = "roleid")
+    private String roleId;
 
     /**
      * 部门id
      */
-    private Integer deptid;
+    @Column(name = "deptid")
+    private Integer deptId;
 
     /**
      * 状态(1：启用  2：冻结  3：删除）
