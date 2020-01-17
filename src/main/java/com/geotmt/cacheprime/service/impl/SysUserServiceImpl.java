@@ -34,7 +34,7 @@ public class SysUserServiceImpl implements ISysUserService {
 
     @Override
     public SysUserDO getByUsername(String username) {
-        return sysUserRepository.findByUsername(username);
+        return sysUserRepository.findByAccount(username);
     }
 
 
@@ -42,7 +42,7 @@ public class SysUserServiceImpl implements ISysUserService {
      * 判断用户是否存在
      */
     private boolean exist(String username){
-        SysUserDO userDO = sysUserRepository.findByUsername(username);
+        SysUserDO userDO = sysUserRepository.findByAccount(username);
         return (userDO != null);
     }
 

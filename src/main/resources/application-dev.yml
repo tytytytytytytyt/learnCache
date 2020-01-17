@@ -4,6 +4,9 @@ logging:
 mybatis:
   config-location: classpath:mybatis.cfg.xml  #mybatis所在路径
 
+
+
+
 spring:
   redis:
     database: 15
@@ -31,6 +34,12 @@ spring:
     ehcache:
       config: classpath:ehcache/ehcache.xml
     type: ehcache
+  thymeleaf:
+    prefix:
+      classpath: /templates   # ����template�µ�html�ļ���Ҫ����ģ�壬ӳ��
+    cache: false # ����ʱ�رջ���,��Ȼû������ʵʱҳ��
+  mvc:
+    static-path-pattern: /static/**
 
 
 hello:          ##  数据源配置  springbootdb_cluster

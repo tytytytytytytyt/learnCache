@@ -5,7 +5,10 @@
     <title>注册 | SpringForAll - Spring Security</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
 </head>
-
+<script type="text/javascript" src="static/js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="static/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <body style="background-color: #f1f1f1; padding-bottom: 0">
 
 <div th:insert="~{header :: nav}"></div>
@@ -23,7 +26,7 @@
                         <div class="form-group" style="margin-top: 30px">
                             <div class="input-group col-md-6 col-md-offset-3">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="账号">
+                                <input type="text" class="form-control" name="account" id="account" placeholder="账号">
                             </div>
                         </div>
                         <div class="form-group ">
@@ -35,7 +38,13 @@
                         <div class="form-group ">
                             <div class="input-group col-md-6 col-md-offset-3">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>
-                                <input type="text" class="form-control" name="nickname" id="nickname" placeholder="昵称">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>
+                                <input type="text" class="form-control" name="birthday" placeholder="生日" id="birthdaypicker">
                             </div>
                         </div>
                         <br>
@@ -62,7 +71,11 @@
     </div>
 
 </div>
-
 </body>
 
+<script>
+    $('#birthdaypicker').datetimepicker({
+        format: 'yyyy-mm-dd'
+    });
+</script>
 </html>
