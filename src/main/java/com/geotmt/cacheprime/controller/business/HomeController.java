@@ -4,6 +4,7 @@ import com.geotmt.cacheprime.base.common.HttpCode;
 import com.geotmt.cacheprime.base.excepiton.GlobalException;
 import com.geotmt.cacheprime.entity.SysUserDO;
 import com.geotmt.cacheprime.service.ISysUserService;
+import com.geotmt.cacheprime.utils.SessionKey;
 import com.geotmt.cacheprime.utils.VertifyUtil;
 import com.google.code.kaptcha.Constants;
 import com.google.common.collect.Maps;
@@ -47,6 +48,7 @@ public class HomeController {
         }
         SysUserDO userDO = userService.CheckUserNameAndPasswod(username,password);
         request.setAttribute("account",userDO.getAccount());
+        request.getSession().setAttribute(SessionKey.SYS_USER_ACCOUNT,userDO.getAccount());
         return "index";
     }
 
