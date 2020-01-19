@@ -1,4 +1,4 @@
-package com.geotmt.cacheprime.dao.hello;
+package com.geotmt.cacheprime.dao.jpa;
 
 import com.geotmt.cacheprime.entity.SysUserDO;
 import org.springframework.data.repository.CrudRepository;

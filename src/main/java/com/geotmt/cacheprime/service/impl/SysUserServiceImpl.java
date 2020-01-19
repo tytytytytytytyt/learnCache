@@ -1,12 +1,11 @@
 package com.geotmt.cacheprime.service.impl;
 
 
-import com.geotmt.cacheprime.dao.hello.SysUserRepository;
+import com.geotmt.cacheprime.dao.jpa.SysUserRepository;
 import com.geotmt.cacheprime.entity.SysUserDO;
 import com.geotmt.cacheprime.service.ISysUserService;
 import com.geotmt.cacheprime.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

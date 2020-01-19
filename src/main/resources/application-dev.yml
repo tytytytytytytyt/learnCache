@@ -58,19 +58,7 @@ world:          ## cluster 数据源配置
     driverClassName: com.mysql.cj.jdbc.Driver
 
 
-# 数据源 Frist
-datasource:
-  first:
-    url: jdbc:mysql://10.10.14.199:22066/private_yxd?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: root
-    password: DsideaL147258369
-    driverClassName: com.mysql.cj.jdbc.Driver
 
-  # 数据源 Second
-  spring.datasource.second.url=jdbc:mysql://10.10.14.199:22066/yxd_test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-  spring.datasource.second.username=root
-  spring.datasource.second.password=DsideaL147258369
-  spring.datasource.second.driverClassName=com.mysql.cj.jdbc.Driver
 
 
 
