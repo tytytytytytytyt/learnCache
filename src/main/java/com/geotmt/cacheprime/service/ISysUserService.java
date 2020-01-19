@@ -19,4 +19,7 @@ public interface ISysUserService {
      */
     SysUserDO getByUsername(String username);
 
+
+    SysUserDO CheckUserNameAndPasswod(String username,String password);
+
 }
