@@ -26,7 +26,7 @@ public class UserController {
             String attributeName = attributeNames.nextElement();
             request.getSession().removeAttribute(attributeName);
         }
-        return "loginPage";
+        return "login";
     }
 
 }
