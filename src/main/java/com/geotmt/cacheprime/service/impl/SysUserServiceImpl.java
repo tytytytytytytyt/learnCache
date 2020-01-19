@@ -55,10 +55,15 @@ public class SysUserServiceImpl implements ISysUserService {
         }
         String salt = sysUserDO.getSalt();
         String encodePassWord = MD5Util.md5(password, salt);
-        if (!encodePassWord.equals(password)) {
+        if (!encodePassWord.equals(sysUserDO.getPassword())) {
             throw new GlobalException(HttpCode.LOGIN_ERROR);
         }
         return sysUserDO;
+    }
+
+    public static void main(String[] args) {
+        String gbe0 = MD5Util.md5("111111", "gbe0");
+        System.out.println(gbe0);
     }
 
 
